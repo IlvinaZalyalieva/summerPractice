@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacancy Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='ilvina.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Vacancy Search</h1>
+        <form action="/api/search" method="post">
+            <label>
+                Keyword:
+                <input type="text" name="keyword" />
+            </label>
+            <label>
+                Area:
+                <input type="text" name="area" />
+            </label>
+            <label>
+                Salary From:
+                <input type="number" name="salary_from" />
+            </label>
+            <label>
+                Salary To:
+                <input type="number" name="salary_to" />
+            </label>
+            <button type="submit">Search</button>
+        </form>
+        {% if response.vacancies %}
+            <div>
+                <h2>Vacancies</h2>
+                {% for vacancy in response.vacancies %}
+                    <div class="vacancy">
+                        <h3>{{ vacancy[1] }}</h3>
+                        <p class="meta">
+                            <strong>Area:</strong> {{ vacancy[2] }} |
+                            <strong>Salary:</strong> {{ vacancy[4] }} - {{ vacancy[5] }} {{ vacancy[3] }} |
+                            <strong>Employer:</strong> {{ vacancy[6] }}
+                        </p>
+                        <div class="description">
+                            <p><strong>Requirements:</strong> {{ vacancy[8] }}</p>
+                            <p><strong>Responsibilities:</strong> {{ vacancy[9] }}</p>
+                        </div>
+                        <p class="meta">
+                            <strong>Created At:</strong> {{ vacancy[10] }} |
+                            <strong>Published At:</strong> {{ vacancy[11] }}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
