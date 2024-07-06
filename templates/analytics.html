@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Аналитика</h1>
+    <form action="/analytics" method="get">
+        <label for="keyword">Вакансия:</label>
+        <input type="text" id="keyword" name="keyword">
+        <button type="submit">Искать</button>
+    </form>
+    <h2>  </h2>
+    <p>Количество вакансий: {{ count }}</p>
+    <a href="/check_vacancies" class="check-vacancies-btn">Актуальные вакансии</a>
+</body>
+</html>

@@ -3,49 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vacancy Search</title>
+    <title>Поиск вакансий</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='ilvina.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Vacancy Search</h1>
+        <h1>Поиск вакансий</h1>
         <form action="/api/search" method="post">
             <label>
-                Keyword:
-                <input type="text" name="keyword" />
+                Вакансия:
+                <input type="text" name="keyword" class="rounded-input" />
             </label>
             <label>
-                Area:
-                <input type="text" name="area" />
+                Город:
+                <input type="text" name="area" class="rounded-input" />
             </label>
             <label>
-                Salary From:
-                <input type="number" name="salary_from" />
+                Зарплата от:
+                <input type="number" name="salary_from" class="rounded-input" />
             </label>
             <label>
-                Salary To:
-                <input type="number" name="salary_to" />
+                Зарплата дo:
+                <input type="number" name="salary_to" class="rounded-input" />
             </label>
-            <button type="submit">Search</button>
+            <button type="submit" class="rounded-button">Искать</button>
         </form>
+        <a href="{{ url_for('check_vacancies') }}" class="check-vacancies-btn">Список актуальных предложений</a>
         {% if response.vacancies %}
             <div>
-                <h2>Vacancies</h2>
+    
                 {% for vacancy in response.vacancies %}
                     <div class="vacancy">
                         <h3>{{ vacancy[1] }}</h3>
+                            
                         <p class="meta">
-                            <strong>Area:</strong> {{ vacancy[2] }} |
-                            <strong>Salary:</strong> {{ vacancy[4] }} - {{ vacancy[5] }} {{ vacancy[3] }} |
-                            <strong>Employer:</strong> {{ vacancy[6] }}
+                            <strong>Город:</strong> {{ vacancy[2] }} |
+                            <strong>Зарплата:</strong> {{ vacancy[4] }} - {{ vacancy[5] }} {{ vacancy[3] }} |
+                            <strong>Работодатель:</strong> {{ vacancy[6] }}
                         </p>
                         <div class="description">
-                            <p><strong>Requirements:</strong> {{ vacancy[8] }}</p>
-                            <p><strong>Responsibilities:</strong> {{ vacancy[9] }}</p>
+                            <p><strong>Требования:</strong> {{ vacancy[8] }}</p>
+                            <p><strong>Обязанности:</strong> {{ vacancy[9] }}</p>
                         </div>
                         <p class="meta">
-                            <strong>Created At:</strong> {{ vacancy[10] }} |
-                            <strong>Published At:</strong> {{ vacancy[11] }}
+                            <strong>Последнее обращение:</strong> {{ vacancy[10] }} |
+                            <strong>Опубликована:</strong> {{ vacancy[11] }}
                         </p>
                     </div>
                 {% endfor %}

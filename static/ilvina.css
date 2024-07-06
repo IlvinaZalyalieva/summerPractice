@@ -53,3 +53,27 @@ button:hover {
 .vacancy .description {
     margin-top: 10px;
 }
+.rounded-input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+.rounded-button {
+    border-radius: 5px;
+    padding: 8px 15px;
+}
+.check-vacancies-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.check-vacancies-btn:hover {
+    background-color: #0056b3;
+}

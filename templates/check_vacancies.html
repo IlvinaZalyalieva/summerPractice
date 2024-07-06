@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка актуальности вакансий</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='check_vacancies.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Список актуальных вакансий</h1>
+        {% if deleted_vacancies %}
+            <div class="deleted-vacancies">
+                <h2>Удаленные вакансии:</h2>
+                <ul>
+                    {% for vacancy in deleted_vacancies %}
+                        <li>{{ vacancy }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Город</th>
+                    <th>Зарплата от</th>
+                    <th>Зарплата до</th>
+                    <th>Валюта</th>
+                    <th>Работодатель</th>
+                    <th>Опубликовано</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vacancy in vacancies %}
+                <tr>
+                    <td>{{ vacancy[1] }}</td>
+                    <td>{{ vacancy[2] }}</td>
+                    <td>{{ vacancy[4] }}</td>
+                    <td>{{ vacancy[5] }}</td>
+                    <td>{{ vacancy[3] }}</td>
+                    <td>{{ vacancy[6] }}</td>
+                    <td>{{ vacancy[11] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('search_vacancies') }}" class="back-btn">Назад к поиску</a>
+        <a href="/analytics" class="analytics-btn">Аналитика</a>
+</body>
+    </div>
+</body>
+</html>

@@ -9,8 +9,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Устанавливаем psycopg2 (драйвер PostgreSQL для Python)
-RUN pip install --no-cache-dir psycopg2-binary Flask 
-RUN pip install requests
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 # Копируем исходный код приложения в Docker-образ
 COPY . /app
 WORKDIR /app
