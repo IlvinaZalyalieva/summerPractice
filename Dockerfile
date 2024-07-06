@@ -8,7 +8,7 @@ RUN apt-get update && \
     libpq-dev && \
     rm -rf /var/lib/apt/lists/*
 
-# Устанавливаем psycopg2 (драйвер PostgreSQL для Python)
+
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 # Копируем исходный код приложения в Docker-образ
